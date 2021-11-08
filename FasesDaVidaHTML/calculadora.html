@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<title>Em que fase estou?</title>
+</head>
+<body>
+		<div id="barra_inicial">
+
+			<div id="logo">
+				<h1><span id="sp1">Fases </span><span id="sp2">da </span><span id="sp3">vida</span><h1>
+			</div>
+
+			<div id="menu_barra">
+				<a href="index.html">Home</a>
+				<a href="calculadora.html">Em que fase estou?</a>
+			</div>
+
+		</div>
+		<br>
+		<br>
+		<br>
+		<table align="center" border="2">
+			<tr>
+				<caption><div class="title">Calculadora</div></caption>
+			</tr>
+			<tr>
+				<div class="input">
+					<th style=" background-color: tomato;"><label>Nome:</label></th>
+					<td bgcolor="white"><input type="text"  id="no"></td>
+				</div>
+			</tr>
+			<tr>
+				<div class="input">
+					<th style=" background-color: lightcoral;"><label>Dia de nascimento:</label></th>
+					<td bgcolor="white"><input type="number"  id="dia"></td>
+				</div>
+			</tr>
+			<tr>
+				<div class="input">
+					<th style=" background-color: gold;"><label>Mes de nascimento:</label></th>
+					<td bgcolor="white"><input type="number"  id="mes"></td>
+				</div>
+			</tr>
+			<tr>
+					<div class="input">
+					<th style=" background-color: lightgreen;"><label>Ano de nascimento:</label></th>
+					<td bgcolor="white"><input type="number"  id="ano"></td>
+			</tr>
+			<tr>
+					<th bgcolor="gray"><button id="calcular">Calcular</button></th>
+					<td bgcolor="salmon" ><p id="resul"></p></td>
+			</tr>
+
+		</table><br><br>
+					
+			
+
+
+	<script type="text/javascript">
+		const calcular = document.getElementById('calcular');
+					
+			function idade() {
+				const nome = document.getElementById('no').value;
+				const dia = document.getElementById('dia').value;
+				const mes = document.getElementById('mes').value;
+				const ano = document.getElementById('ano').value;
+				var resultado = document.getElementById('resul');
+
+        		var data = new Date();
+        		dia_atual = data.getDate();
+        		mes_atual = data.getMonth() + 1;
+        		ano_atual = data.getFullYear();
+
+        		quantos_anos = ano_atual - ano;
+        		if(nome!==''||dia!==''||mes!==''||ano!=='')
+        		{
+        				if(mes_atual < mes || mes_atual == mes && dia_atual < dia)
+        					{
+        						quantos_anos--;
+        						let classificacao='';
+        							if(quantos_anos<=11){
+        							classificacao = 'fase infantil';
+        							}
+        							if(quantos_anos>=12&&quantos_anos<=20){
+        							classificacao = 'fase adolescente';
+        							}
+        							if(quantos_anos>20&&quantos_anos<=75){
+        							classificacao = 'fase adulta';
+        							}
+        							if(quantos_anos>=76){
+        							classificacao = 'fase da velhice';
+        							}
+        					resultado.textContent=`${nome} você tem ${quantos_anos} anos, e você está na ${classificacao}`;	
+        					}else
+        						{
+        							let classificacao='';
+        								if(quantos_anos<=11){
+        								classificacao = 'fase infantil';
+        								}
+        								if(quantos_anos>=12&&quantos_anos<=20){
+        								classificacao = 'fase adolescente';
+        								}
+        								if(quantos_anos>20&&quantos_anos<=75){
+        								classificacao = 'fase adulta';
+        								}
+        								if(quantos_anos>=76){
+        								classificacao = 'fase da velhice';
+        								}
+        						resultado.textContent=`${nome} você tem ${quantos_anos} anos, e você está na ${classificacao}`;	
+        						}
+        				
+        		}else{
+        			resultado.textContent=`Preencha todos os campos.`;	
+        		}
+    				
+    	
+    				}
+    		calcular.addEventListener('click', idade);
+	
+		</script>
+</body>
+</html>
